@@ -1,13 +1,14 @@
 body {
   background: blue;
   margin: 0;
-  font: 12pt Monaco;
+  font: 18px Monaco;
   text-align: center;
 }
 
 #title_bar {
   background: black;
   color: white;
+  height: 25px;
   padding: 10px 5%;
   width: 90%;
 }
