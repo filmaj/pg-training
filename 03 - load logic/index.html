@@ -23,6 +23,16 @@
 			}
 			// This will be the actual application initialization logic.
 			function appInit() {
+			  // we can bind some events now
+			  document.getElementById('map_button').ontouchend = function () {
+			    alert('You touched the map button!');
+			    return false;
+			  }
+			  
+			  document.getElementById('settings_button').ontouchend = function () {
+			    alert('You touched the settings button!');
+			    return false;
+			  }
 			}
 		</script>
 	</head>
