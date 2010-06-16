@@ -1,0 +1,22 @@
+body {
+  background: blue;
+  margin: 0;
+  font: 12pt Monaco;
+  text-align: center;
+}
+
+#title_bar {
+  background: black;
+  color: white;
+  padding: 10px 5%;
+  width: 90%;
+}
+
+.app_button {
+  background: gold;
+  border: khaki;
+  margin: 15px auto;
+  padding: 5px;
+  width: 200px;
+  -webkit-border-radius: 5px;
+}
