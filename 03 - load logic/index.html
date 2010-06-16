@@ -28,7 +28,41 @@
 	</head>
 	<!-- Make sure we assign our load logic to body's onload -->
 	<body onload="loadItUp(appInit);">
-		<div id="map">
+ 		<div id="title_bar">PhoneGap Training App</div>
+
+		<div id="welcome" class="view">
+		  <div class="app_button" id="map_button">Show My Location</div> 
+
+  	  <div class="app_button" id="settings_button">Settings</div>
 		</div>
+
+		<div id="map" class="view">
+		  <div class="map_image">
+        <img id="static_map" src="staticmap.png">
+		  </div>
+		  <p>This is where you are</p>
+		</div>
+
+		<div id="settings" class="view">
+		  <form id="settings_form">
+		    <p>Map Type</p>
+		    <select>
+		      <option value="roadmap">Road Map</option>
+		      <option value="satellite">Satellite</option>
+		      <option value="terrain">Terrain</option>
+		      <option value="hybrid">Hybrid</option>
+		    </select>
+		    <p>Zoom Level</p>
+		      <select>
+  		      <option value="10">Super Far</option>
+  		      <option value="12">Far</option>
+  		      <option value="15" selected>Normal</option>
+  		      <option value="18">Close</option>
+  		      <option value="20">Super Close</option>
+  		    </select><br>
+		    <button>Save</button>
+	    </form>
+		</div>
+
 	</body>
 </html>
