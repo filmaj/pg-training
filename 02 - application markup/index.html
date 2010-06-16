@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html>
 <html>
 	<head>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
@@ -11,17 +11,23 @@
 	<body>
 		<!-- Now we add the main views of our app. -->
 		<div id="title_bar">PhoneGap Training App</div>
+		
+		<!-- the welcome view, where the app begins -->
 		<div id="welcome" class="view">
 		  <div class="app_button" id="map_button">Show My Location</div> 
 
   	  <div class="app_button" id="settings_button">Settings</div>
 		</div>
+		
+		<!-- the view containing the map itself -->
 		<div id="map" class="view">
 		  <div class="map_image">
-        <img src="staticmap.png">
+        <img id="static_map" src="staticmap.png">
 		  </div>
 		  <p>This is where you are</p>
 		</div>
+		
+		<!-- settings for the app -->
 		<div id="settings" class="view">
 		  <form id="settings_form">
 		    <p>Map Type</p>
@@ -42,5 +48,6 @@
 		    <button>Save</button>
 	    </form>
 		</div>
+		
 	</body>
 </html>
