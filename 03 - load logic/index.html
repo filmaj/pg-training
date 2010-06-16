@@ -24,11 +24,14 @@
 			// This will be the actual application initialization logic.
 			function appInit() {
 			  // we can bind some events now
+			  // we're using the touchend event here
 			  document.getElementById('map_button').ontouchend = function () {
 			    alert('You touched the map button!');
 			    return false;
 			  }
 			  
+			  // touchend is faster than click on the iphone
+			  // however, it's not available on all devices, and not on desktop browsers
 			  document.getElementById('settings_button').ontouchend = function () {
 			    alert('You touched the settings button!');
 			    return false;
