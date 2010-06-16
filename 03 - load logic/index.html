@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
+		<title>Training App</title>
+		<link rel="stylesheet" href="master.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript">
+			// Calls the passed-in function once PhoneGap is ready.
+			function loadItUp(initializationFunction) {
+				// Check whether the document is loaded, if so, run the initialization function.
+				if (document.readyState == 'loaded' || document.readyState == 'complete') {
+					initializationFunction();
+				} else {
+					// If it's not a BlackBerry, we can use real events. If it is, simply delay the loading logic.
+					if (navigator.userAgent.indexOf('Browzr') > -1) {
+						setTimeout(initializationFunction, 250)	
+					} else {
+						// Key on the deviceready event, which PhoneGap browsers dispatch on the document once PhoneGap is ready.
+						document.addEventListener('deviceready', initializationFunction, false);
+					}
+				}
+			}
+			// This will be the actual application initialization logic.
+			function appInit() {
+			}
+		</script>
+	</head>
+	<!-- Make sure we assign our load logic to body's onload -->
+	<body onload="loadItUp(appInit);">
+		<div id="map">
+		</div>
+	</body>
+</html>
