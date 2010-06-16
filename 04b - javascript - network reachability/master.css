@@ -1,0 +1,7 @@
+/**
+ * Since all of the views are the same, we'll set them to static widths and heights to match our device.
+ **/
+.view {
+	width: 320px;
+	height: 480px;
+}
