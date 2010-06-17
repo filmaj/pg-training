@@ -6,9 +6,10 @@
   code into multiple js files
 **/
 
+// TODO: clean this up
 function loadItUp(initializationFunction) {
 	if (document.readyState == 'loaded' || document.readyState == 'complete') {
-		initializationFunction();
+	  document.addEventListener('deviceready', initializationFunction, false);
 	} else {
 		if (navigator.userAgent.indexOf('Browzr') > -1) {
 			setTimeout(initializationFunction, 250)	
@@ -41,6 +42,9 @@ function appInit() {
     displayView('welcome');
     return false;
   }
+  
+  // check if we can access google.com
+  navigator.network.isReachable("google.com", isNetworkAvailable);
 }
 
 // this function will allow us to hide the current view and
@@ -57,4 +61,19 @@ function displayView(id) {
     }
     i++;
   }
+}
+
+// letting the user know if we can't get any maps
+function isNetworkAvailable(status) {
+	if (status.internetConnectionStatus === NetworkStatus.NOT_REACHABLE) {
+		navigator.notification.alert(
+		  "No internet connection - we won't be able to show you any maps", 
+		  "PhoneGap Training", 
+		  "Okay");
+	} else {
+		navigator.notification.alert(
+		  "We can reach Google - get ready for some awesome maps!", 
+		  "PhoneGap Training", 
+		  "Huzzah!");
+	}
 }
