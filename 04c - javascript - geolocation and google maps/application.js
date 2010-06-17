@@ -24,6 +24,7 @@ function appInit() {
   // "Show My Location" button (welcome view)
   document.getElementById('map_button').ontouchend = function () {
     displayView('map');
+    navigator.geolocation.getCurrentPosition(displayGoogleMap);
   }
   
   // "Settings" button (welcome view)
@@ -78,7 +79,9 @@ function isNetworkAvailable(status) {
 	}
 }
 
-function displayGoogleMap(location) {
+// replacing the placeholder image with an image based on the given location
+function displayGoogleMap(position) {
+  var location = "" + position.coords.latitude + "," + position.coords.longitude;
   var mapType = document.getElementById('map_type').value;
   var zoomLevel = document.getElementById('zoom_level').value;
   
