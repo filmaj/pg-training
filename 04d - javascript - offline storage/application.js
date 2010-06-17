@@ -20,7 +20,7 @@ function loadItUp(initializationFunction) {
 }
 
 function appInit() {
-  initializateDatabase();
+  initializeDatabase();
   
   // there are 4 interaction points in the app:
   // "Show My Location" button (welcome view)
@@ -104,6 +104,8 @@ function saveSettings() {
 }
 
 function checkSettingsGetPositionAndDisplayGoogleMap() {
+  document.getElementById("static_map").src = "";
+  
   getAllSettings(function (settings) {
     var mapType = 
       settings['mapType'] || document.getElementById('map_type').value;
