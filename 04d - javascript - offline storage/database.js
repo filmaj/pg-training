@@ -28,3 +28,26 @@ function initializeDatabase() {
     alert('There has been a transaction error:' + error.messaage);
   }); // If we want, we can put a success callback here also
 }
+
+function updateDatabase(settings) {
+  myDatabase.transaction(function (transaction) {
+    var setting;
+    for (setting in settings) {
+      transaction.executeSql(
+        "INSERT OR REPLACE INTO settings (settingName, settingValue)" +
+        "VALUES (?,?);",
+        [setting, settings[setting]],
+        function (transaction, resultSet) {
+          // a success callback
+        },
+        function (transaction, error) {
+          alert('There has been a query error:' + error.message);
+        }
+      )
+    }
+  })
+}
+
+function getAllSettings(callback) {
+  
+}
