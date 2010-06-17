@@ -22,24 +22,24 @@ function loadItUp(initializationFunction) {
 function appInit() {
   // there are 4 interaction points in the app:
   // "Show My Location" button (welcome view)
-  document.getElementById('map_button').ontouchend = function () {
+  document.getElementById('map_button').onclick = function () {
     displayView('map');
     navigator.geolocation.getCurrentPosition(displayGoogleMap);
   }
   
   // "Settings" button (welcome view)
-  document.getElementById('settings_button').ontouchend = function () {
+  document.getElementById('settings_button').onclick = function () {
     displayView('settings');
   }
   
   // "Go Back" button (map view)
-  document.getElementById('back_button').ontouchend = function () {
+  document.getElementById('back_button').onclick = function () {
     displayView('welcome');
   }
   
   // "Save" button (settings view)
   // we want to override the default behaviour, so we return false
-  document.getElementById('save_button').ontouchend = function () {
+  document.getElementById('save_button').onclick = function () {
     displayView('welcome');
     return false;
   }
@@ -82,13 +82,25 @@ function isNetworkAvailable(status) {
 // replacing the placeholder image with an image based on the given location
 function displayGoogleMap(position) {
   var location = "" + position.coords.latitude + "," + position.coords.longitude;
-  var mapType = document.getElementById('map_type').value;
-  var zoomLevel = document.getElementById('zoom_level').value;
+  var mapType = get_radio_value(document.getElementById('settings_form').map_type);
+  var zoomLevel = get_radio_value(document.getElementById('settings_form').zoom_level);
   
   var mapPath = " http://maps.google.com/maps/api/staticmap?center=" + 
               location + "&zoom=" + zoomLevel +
               "&size=250x250&maptype=" + mapType + "&markers=color:red|label:P|" + 
               location + "&sensor=false";
+			debug.log(mapPath);
               
   document.getElementById("static_map").src = mapPath;
+}
+
+function get_radio_value(radEl)
+{
+for (var i=0; i < radEl.length; i++)
+   {
+   if (radEl[i].checked)
+      {
+      return radEl[i].value;
+      }
+   }
 }

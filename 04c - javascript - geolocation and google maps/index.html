@@ -4,6 +4,7 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<title>Training App</title>
 		<link rel="stylesheet" href="master.css" type="text/css" media="screen" />
+		<script language="javascript" type="text/javascript" src="/usr/palm/frameworks/mojo/mojo.js" x-mojo-version="1"></script>
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="application.js"></script>
 	</head>
@@ -18,7 +19,7 @@
 
 		<div id="map" class="view">
 		  <div class="map_image">
-        <img id="static_map" src="staticmap.png">
+        <img id="static_map" src="staticmap.png" />
 		  </div>
 		  <p>This is where you are</p>
 		  
@@ -28,19 +29,16 @@
 		<div id="settings" class="view">
 		  <form id="settings_form">
 		    <p>Map Type</p>
-		    <select id="map_type">
-		      <option value="roadmap">Road Map</option>
-		      <option value="satellite">Satellite</option>
-		      <option value="terrain">Terrain</option>
-		      <option value="hybrid">Hybrid</option>
-		    </select>
+		      <input type="radio" name="map_type" value="roadmap" checked>Road Map<br/>
+		      <input type="radio" name="map_type" value="satellite">Satellite<br/>
+		      <input type="radio" name="map_type" value="terrain">Terrain<br/>
+		      <input type="radio" name="map_type" value="hybrid">Hybrid<br/>
 		    <p>Zoom Level</p>
-		      <select id="zoom_level">
-  		      <option value="10">Super Far</option>
-  		      <option value="12">Far</option>
-  		      <option value="15" selected>Normal</option>
-  		      <option value="18">Close</option>
-  		      <option value="20">Super Close</option>
+  		      <input type="radio" name="zoom_level" value="10">Super Far<br/>
+  		      <input type="radio" name="zoom_level" value="12">Far<br/>
+  		      <input type="radio" name="zoom_level" value="15" checked>Normal<br/>
+  		      <input type="radio" name="zoom_level" value="18">Close<br/>
+  		      <input type="radio" name="zoom_level" value="20">Super Close<br/>
   		    </select><br>
 		    <button id="save_button">Save</button>
 	    </form>
