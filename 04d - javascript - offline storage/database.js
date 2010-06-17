@@ -4,11 +4,11 @@
 var myDatabase;
 
 function initializeDatabase() {
-  myDatabase = window.openDatabase(
+  myDatabase = openDatabase(
     "pg-training",            // short name
     "1.0",                    // version number
     "PhoneGap Training App",  // long name
-    5000000);                 // database size
+    10000);                 // database size
     
   myDatabase.transaction(function (transaction) {
     transaction.executeSql(
