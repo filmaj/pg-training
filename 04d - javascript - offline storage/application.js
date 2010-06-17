@@ -20,11 +20,13 @@ function loadItUp(initializationFunction) {
 }
 
 function appInit() {
+  initializateDatabase();
+  
   // there are 4 interaction points in the app:
   // "Show My Location" button (welcome view)
   document.getElementById('map_button').ontouchend = function () {
     displayView('map');
-    navigator.geolocation.getCurrentPosition(displayGoogleMap);
+    checkSettingsGetPositionAndDisplayGoogleMap();
   }
   
   // "Settings" button (welcome view)
@@ -41,6 +43,7 @@ function appInit() {
   // we want to override the default behaviour, so we return false
   // we also want to save any selections to the database
   document.getElementById('save_button').ontouchend = function () {
+    saveSettings();
     displayView('welcome');
     return false;
   }
@@ -81,10 +84,8 @@ function isNetworkAvailable(status) {
 }
 
 // replacing the placeholder image with an image based on the given location
-function displayGoogleMap(position) {
+function displayGoogleMap(position, mapType, zoomLevel) {
   var location = "" + position.coords.latitude + "," + position.coords.longitude;
-  var mapType = document.getElementById('map_type').value;
-  var zoomLevel = document.getElementById('zoom_level').value;
   
   var mapPath = " http://maps.google.com/maps/api/staticmap?center=" + 
               location + "&zoom=" + zoomLevel +
@@ -92,4 +93,25 @@ function displayGoogleMap(position) {
               location + "&sensor=false";
               
   document.getElementById("static_map").src = mapPath;
+}
+
+function saveSettings() {
+  var settings = {};
+  settings['mapType'] = document.getElementById('map_type').value;
+  settings['zoomLevel'] = document.getElementById('zoom_level').value;
+  
+  updateDatabase(settings);
+}
+
+function checkSettingsGetPositionAndDisplayGoogleMap() {
+  getAllSettings(function (settings) {
+    var mapType = 
+      settings['mapType'] || document.getElementById('map_type').value;
+    var zoomLevel =
+      settings['zoomLevel'] || document.getElementById('zoom_level').value;
+      
+    navigator.geolocation.getCurrentPosition(function (position) {
+      displayGoogleMap(position, mapType, zoomLevel);
+    });
+  });
 }
