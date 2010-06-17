@@ -1,7 +1,7 @@
 body {
   background: blue;
   margin: 0;
-  font: 18px Monaco;
+  font: 18px Helvetica;
   text-align: center;
 }
 
@@ -68,7 +68,7 @@ body {
 }
 
 button {
-  font: 18px Monaco;
+  font: 18px Helvetica;
   height: 30px;
   width: 100px;
   -webkit-appearance:push-button;
