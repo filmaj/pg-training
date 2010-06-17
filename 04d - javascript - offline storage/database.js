@@ -49,5 +49,21 @@ function updateDatabase(settings) {
 }
 
 function getAllSettings(callback) {
-  
+  myDatabase.transaction(function (transaction) {
+    var settings = {};
+    transaction.executeSql(
+      "SELECT * FROM settings", [],
+      function (transaction, resultSet) {
+        var i = 0;
+        for (i; i<resultSet.rows.length; i++) {
+          var currentRow = resultSet.rows.item(i);
+          settings[currentRow.settingName] = currentRow.settingValue;
+        }
+        callback(settings);
+      },
+      function (transaction, error) {
+        alert('There has been a query error:' + error.message);
+      }
+    );
+  })
 }
