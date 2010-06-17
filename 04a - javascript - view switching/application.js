@@ -19,17 +19,42 @@ function loadItUp(initializationFunction) {
 }
 
 function appInit() {
+  // there are 4 interaction points in the app:
+  // "Show My Location" button (welcome view)
   document.getElementById('map_button').ontouchend = function () {
-    alert('You touched the map button!');
+    displayView('map');
   }
   
+  // "Settings" button (welcome view)
   document.getElementById('settings_button').ontouchend = function () {
-    alert('You touched the settings button!');
+    displayView('settings');
+  }
+  
+  // "Go Back" button (map view)
+  document.getElementById('back_button').ontouchend = function () {
+    displayView('welcome');
+  }
+  
+  // "Save" button (settings view)
+  // we want to override the default behaviour, so we return false
+  document.getElementById('save_button').ontouchend = function () {
+    displayView('welcome');
+    return false;
   }
 }
 
 // this function will allow us to hide the current view and
 // to display a new one
 function displayView(id) {
+  var views = ["welcome", "map", "settings"];
+  var i=0;
   
+  while (i < views.length) {
+    if (views[i]==id) {
+      document.getElementById(id).style.display = "block";
+    } else {
+      document.getElementById(views[i]).style.display = "none";
+    }
+    i++;
+  }
 }
