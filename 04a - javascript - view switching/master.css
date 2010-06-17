@@ -22,6 +22,10 @@ body {
   -webkit-border-radius: 5px;
 }
 
+#back_button {
+  background: grey;
+}
+
 /**
  * Since all of the views are the same, we'll set them to static widths and heights to match our device.
  **/
@@ -32,9 +36,15 @@ body {
 	/* 480 - 20 = 460 */
 	/* then 460 - 40 to account for our title bar */
 	height: 420px;
+	
+	/*  only one view is displayed at a time
+	    so we'll set the views to default to be un-displayed
+	    and then override this based on the element id */
+	display: none;
 }
 /* our three views */
 #welcome {
+  
 }
 #settings {
   background: white;
@@ -42,6 +52,7 @@ body {
 #map {
   background: black;
   color: white;
+  display: block;
 }
 
 .map_image {
