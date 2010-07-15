@@ -24,25 +24,25 @@ function appInit() {
   
   // there are 4 interaction points in the app:
   // "Show My Location" button (welcome view)
-  document.getElementById('map_button').ontouchend = function () {
+  document.getElementById('map_button').onclick = function () {
     displayView('map');
     checkSettingsGetPositionAndDisplayGoogleMap();
   }
   
   // "Settings" button (welcome view)
-  document.getElementById('settings_button').ontouchend = function () {
+  document.getElementById('settings_button').onclick = function () {
     displayView('settings');
   }
   
   // "Go Back" button (map view)
-  document.getElementById('back_button').ontouchend = function () {
+  document.getElementById('back_button').onclick = function () {
     displayView('welcome');
   }
   
   // "Save" button (settings view)
   // we want to override the default behaviour, so we return false
   // we also want to save any selections to the database
-  document.getElementById('save_button').ontouchend = function () {
+  document.getElementById('save_button').onclick = function () {
     saveSettings();
     displayView('welcome');
     return false;
@@ -97,8 +97,8 @@ function displayGoogleMap(position, mapType, zoomLevel) {
 
 function saveSettings() {
   var settings = {};
-  settings['mapType'] = document.getElementById('map_type').value;
-  settings['zoomLevel'] = document.getElementById('zoom_level').value;
+  settings['mapType'] = get_radio_value(document.getElementById('settings_form').map_type);
+  settings['zoomLevel'] = get_radio_value(document.getElementById('settings_form').zoom_level);
   
   updateDatabase(settings);
 }
@@ -108,12 +108,23 @@ function checkSettingsGetPositionAndDisplayGoogleMap() {
   
   getAllSettings(function (settings) {
     var mapType = 
-      settings['mapType'] || document.getElementById('map_type').value;
+      settings['mapType'] || get_radio_value(document.getElementById('settings_form').map_type);
     var zoomLevel =
-      settings['zoomLevel'] || document.getElementById('zoom_level').value;
+      settings['zoomLevel'] || get_radio_value(document.getElementById('settings_form').zoom_level);
       
     navigator.geolocation.getCurrentPosition(function (position) {
       displayGoogleMap(position, mapType, zoomLevel);
     });
   });
+}
+
+function get_radio_value(radEl)
+{
+for (var i=0; i < radEl.length; i++)
+   {
+   if (radEl[i].checked)
+      {
+      return radEl[i].value;
+      }
+   }
 }
