@@ -15,7 +15,7 @@
 
         module("database.js");
 
-        test("myDatabase inits unefined", function() {
+        test("myDatabase inits undefined", function() {
           ok(myDatabase === undefined);
         });
         
@@ -37,7 +37,6 @@
         test("adding a mock to the database", function() {
             var mock = {};
             mock['foo'] = 'bar';
-            // FIXME - update should be async 
             updateDatabase(mock);
             stop();
             getAllSettings(function(results) {
@@ -46,6 +45,9 @@
             });
         });
 
+        test("this will fail", function(){
+            ok(false);
+        })
 
 
         </script>
