@@ -1,10 +1,10 @@
 // 
 //  --- our app behavior logic ---
 //
-run(function() {
+run(function () {
     
     // immediately invoked on first run
-    var init = (function() {
+    var init = (function () {
         navigator.network.isReachable("google.com", function(status) {
         	if (status.internetConnectionStatus === NetworkStatus.NOT_REACHABLE) {
         		alert("No internet connection - we won't be able to show you any maps");
@@ -35,7 +35,7 @@ run(function() {
             });
         });
     });
-    when('#save', function() {
+    when('#save', function () {
         store.save({
             key:'config',
             map:ui('map'),
