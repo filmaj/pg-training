@@ -24,3 +24,7 @@ This is a demo app to show you how to get a simple app and running with PhoneGap
 
 ### d: Offline Storage (webkit SQLite DB)
   * Persistent storage between application sessions
+  
+## 5. Add qUnit tests
+
+## 6. Refactoring to patterns and utilize XUI and Lawnchair libs

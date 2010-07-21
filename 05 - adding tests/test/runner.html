@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="qunit.css" type="text/css"/>
+    <script type="text/javascript" src="qunit.js"></script>
+    <script type="text/javascript" src="../database.js"></script>
+  </head>
+  <body>
+    <h1 id="qunit-header">PhoneGap Training Tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests">
+    </ol>
+        <script type="text/javascript">
+
+        module("database.js");
+
+        test("myDatabase inits undefined", function() {
+          ok(myDatabase === undefined);
+        });
+        
+        test("init database", function() {
+            // FIXME - init should be async 
+            initializeDatabase(); 
+            ok(typeof myDatabase === 'object')
+        });
+        
+        test("database is empty", function() {
+            nuke();
+            stop();
+            getAllSettings(function(results) {
+                start();
+                equals(Object.keys(results).length, 0);
+            });
+        });
+
+        test("adding a mock to the database", function() {
+            var mock = {};
+            mock['foo'] = 'bar';
+            updateDatabase(mock);
+            stop();
+            getAllSettings(function(results) {
+                start();
+                equqls(results['foo'], mock['foo']);
+            });
+        });
+
+        test("this will fail", function(){
+            ok(false);
+        })
+
+
+        </script>
+  </body>
+</html>
