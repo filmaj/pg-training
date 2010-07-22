@@ -1070,7 +1070,7 @@
               landscapeSwitch = (window.innerWidth > w && window.innerHeight < h) && (window.innerWidth > window.innerHeight);
           if (portraitSwitch || landscapeSwitch) {
             window.orientation = portraitSwitch ? 0 : 90; // what about -90? Some support is better than none
-            $('body').fire('orientationchange'); // will this bubble up?
+            x$('body').fire('orientationchange'); // will this bubble up?
             w = window.innerWidth;
             h = window.innerHeight;
           }

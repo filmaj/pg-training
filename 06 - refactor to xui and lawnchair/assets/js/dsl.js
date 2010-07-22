@@ -33,6 +33,7 @@ var run = function(application) {
             display(id);
         if (callback)
             callback.call(this);
+		return false;
     });
 }
 
