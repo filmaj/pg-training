@@ -2,13 +2,7 @@
 var run = function(application) {
     x$(window).on('load', function() {
         if (document.readyState == 'loaded' || document.readyState == 'complete') {
-            if (typeof device != "undefined") {
-                // nope, we're running in phonegap!
-                x$(document).on('deviceready', application, false);
-            } else {
-                // running in browser
-                application.call(this);
-            }
+            application.call(this);
         } else {
         	if (navigator.userAgent.indexOf('Browzr') > -1) {
         	    // blackberry
