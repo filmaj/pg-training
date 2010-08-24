@@ -10,6 +10,7 @@ var run = function(application) {
 }
 
 // throw our settings into a lawnchair
+// BLACKBERRY CAVEAT: change the Lawnchair (offline storage library) adapter from DOM storage to the PhoneGap-BlackBerry compatible one.
 , store = new Lawnchair({adaptor:'blackberry'})
 
 // shows id passed
@@ -22,6 +23,8 @@ var run = function(application) {
 
 // reg a click to [id]_button, displays id (if it exists) and executes callback (if it exists)
 , when = function(id, callback) {
+	// BLACKBERRY CAVEAT: in the stock training app, we leveraged the 'touchstart' event. Since most BlackBerries don't support
+	// this event, we switch it over to the 'click' event.
     x$(id + '_button').on('click', function () {
         if (x$(id).length > 0)
             display(id);

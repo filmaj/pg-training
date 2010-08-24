@@ -18,12 +18,15 @@ run(function () {
     when('#welcome');
     when('#settings', function() {
 		store.get('config', function(saved) {
-			alert('settings.get cb (config): ' + JSON.stringify(saved));
 			if (saved) {
 				if (saved.map) {
+					// BLACKBERRY CAVEAT: we have to dig into the DOM references for the selected elements
+					// and directly reference the 'checked' attribute.
 					x$('input[value=' + saved.map + ']')[0].checked = true;
 				}
 				if (saved.zoom) {
+					// BLACKBERRY CAVEAT: we have to dig into the DOM references for the selected elements
+					// and directly reference the 'checked' attribute.
 					x$('input[name=zoom][value="' + saved.zoom + '"]')[0].checked = true;
 				}
 			}
@@ -32,7 +35,6 @@ run(function () {
 	});
     when('#map', function () {
         store.get('config', function (saved) {
-			alert('map.get cb (config): ' + JSON.stringify(saved));
             // construct a gmap str
             var map  = saved ? saved.map || ui('map') : ui('map')
             ,   zoom = saved ? saved.zoom || ui('zoom') : ui('zoom')
@@ -50,7 +52,6 @@ run(function () {
 		
     });
     when('#save', function () {
-		alert('in save');
         store.save({
             key:'config',
             map:ui('map'),

@@ -29,7 +29,7 @@ BlackBerryPersistentStorageAdaptor.prototype = {
 				
 				that.terseToVerboseCallback(callback)(value);
 			}
-		}, function() {alert('get error');}, // empty error cb
+		}, function() {}, // empty error cb
 		key);
 	},
 	save:function(obj, callback) {
@@ -42,7 +42,7 @@ BlackBerryPersistentStorageAdaptor.prototype = {
 				cbObj['key'] = id;
 				that.terseToVerboseCallback(callback)(cbObj);
 			}
-		}, function(){alert('save error');}, id, this.serialize(obj));
+		}, function(){}, id, this.serialize(obj));
 	},
 	all:function(callback) {
 		var that = this;

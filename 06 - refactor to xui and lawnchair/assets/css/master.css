@@ -28,13 +28,13 @@ body {
 
 /**
  * Since all of the views are the same, we'll set them to static widths and heights to match our device.
+ * HOWEVER, on BlackBerry this is not generally desired. The breadth of different resolutions results in
+ * difficulty doing pixel-picture UIs. For this training app, let's switch our view containers from pixel-based
+ * dimensions to percentages for better cross-device compatibility.
  **/
  
 .view {
 	width: 100%;
-	/* on the iPhone, we have to account for the 20px status bar at the top */
-	/* 480 - 20 = 460 */
-	/* then 460 - 40 to account for our title bar */
 	height: 100%;
 	
 	/*  only one view is displayed at a time
@@ -70,5 +70,4 @@ button {
   font: 18px Helvetica;
   height: 30px;
   width: 100px;
-  -webkit-appearance:push-button;
 }
