@@ -10,7 +10,7 @@ var run = function(application) {
 }
 
 // throw our settings into a lawnchair
-, store = new Lawnchair({adaptor:'dom'})
+, store = new Lawnchair({adaptor:'blackberry'})
 
 // shows id passed
 , display = function(id) {
@@ -22,7 +22,7 @@ var run = function(application) {
 
 // reg a click to [id]_button, displays id (if it exists) and executes callback (if it exists)
 , when = function(id, callback) {
-    x$(id + '_button').on('touchstart', function () {
+    x$(id + '_button').on('click', function () {
         if (x$(id).length > 0)
             display(id);
         if (callback)

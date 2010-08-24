@@ -31,11 +31,11 @@ body {
  **/
  
 .view {
-	width: 320px;
+	width: 100%;
 	/* on the iPhone, we have to account for the 20px status bar at the top */
 	/* 480 - 20 = 460 */
 	/* then 460 - 40 to account for our title bar */
-	height: 420px;
+	height: 100%;
 	
 	/*  only one view is displayed at a time
 	    so we'll set the views to default to be un-displayed
